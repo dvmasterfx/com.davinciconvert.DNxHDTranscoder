@@ -1,0 +1,20 @@
+[Application]
+name=com.davinci_convert.dnxhd-gui
+runtime=org.gnome.Platform/x86_64/48
+sdk=org.gnome.Sdk/x86_64/48
+command=dnxhd_gui
+
+[Context]
+shared=network;
+filesystems=host;
+
+[Environment]
+RUST_LOG=info
+
+[Extension com.davinci_convert.dnxhd_gui.Debug]
+directory=lib/debug
+autodelete=true
+no-autodownload=true
+
+[Build]
+built-extensions=com.davinci_convert.dnxhd_gui.Debug;
