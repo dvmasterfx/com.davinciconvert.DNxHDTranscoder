@@ -7,7 +7,9 @@
   "finish-args": [
     "--share=network",
     "--filesystem=host",
-    "--env=RUST_LOG=info"
+    "--env=RUST_LOG=info",
+    "--socket=fallback-x11",
+    "--socket=wayland"
   ],
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "modules": [
