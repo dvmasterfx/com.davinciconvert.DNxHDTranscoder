@@ -6,6 +6,7 @@ command=dnxhd_gui
 
 [Context]
 shared=network;
+sockets=x11;wayland;fallback-x11;
 filesystems=host;
 
 [Environment]
