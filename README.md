@@ -1,27 +1,76 @@
-# Flathub
+# DNxHD Transcoder (GTK4)
 
-Flathub is the central place for building and hosting Flatpak builds.
+A simple GTK4 application to batch transcode videos into Avid DNxHD/DNxHR codecs, targeting MOV or MXF containers. It provides options for audio bit depth/channels, frame-rate control, timecode injection, and optional EBU R128 loudness normalization.
 
-Using the Flathub repository
-----------------------------
+- App ID: `com.davinciconvert.DNxHDTranscoder`
+- License: GPL-3.0-or-later
 
-To install applications that are hosted on Flathub, use the following:
+## Features
+- Drag-and-drop or file chooser to select multiple input videos (MP4/MOV)
+- Output container selection: MOV or MXF
+- DNxHR profiles: LB, SQ, HQ, HQX (10-bit), 444 (10-bit)
+- Audio depth: 16-bit or 24-bit PCM; channels: 2/4/8
+- Preserve FPS or set a target FPS
+- Optional timecode injection
+- Optional EBU R128 (-23 LUFS) loudness normalization
+- Live progress updates per file
+
+Internally, the app shells out to `ffmpeg`/`ffprobe` and parses progress via `-progress pipe:1`.
+
+## Build (native)
+Prerequisites on Fedora (example):
+- gtk4-devel, glib2-devel, pango-devel, cairo-devel, gdk-pixbuf2-devel
+- rust/cargo
+
+Build and run:
 ```
-flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.gnome.Recipes
+cargo build --release
+./target/release/dnxhd_gui
 ```
 
-To install applications from the beta branch, use the following:
+Note: Native runs require `ffmpeg` and `ffprobe` available on PATH.
+
+## Flatpak/Flathub
+The repository includes a Flatpak manifest and packaging assets for Flathub.
+
+- Manifest: `flatpak/com.davinciconvert.DNxHDTranscoder.json`
+- Desktop file: `packaging/com.davinciconvert.DNxHDTranscoder.desktop`
+- Icon: `packaging/com.davinciconvert.DNxHDTranscoder.svg`
+- AppStream: `packaging/com.davinciconvert.DNxHDTranscoder.metainfo.xml`
+
+Build locally with Flatpak:
 ```
-flatpak remote-add flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-flatpak install flathub-beta org.godotengine.Godot
+flatpak-builder --user --force-clean build-dir flatpak/com.davinciconvert.DNxHDTranscoder.json
+```
+Run inside the Flatpak build:
+```
+flatpak-builder --run build-dir flatpak/com.davinciconvert.DNxHDTranscoder.json dnxhd_gui
 ```
 
-For more information and more applications see https://flathub.org
+### Runtimes
+- Runtime: `org.gnome.Platform//48`
+- SDK: `org.gnome.Sdk//48`
+- Rust: `org.freedesktop.Sdk.Extension.rust-stable`
 
-Contributing to Flathub
------------------------
+### Bundled dependencies
+For portability and codec availability, the manifest builds and installs a minimal `ffmpeg` and `ffprobe` inside the sandbox (static, limited features: DNxHD/DNxHR encode, PCM, MOV/MXF, loudnorm filter, etc.).
 
-For information on creating packages or reporting issues please see the [contributing page](/CONTRIBUTING.md).
+### Permissions
+Current `finish-args` are kept minimal and portal-friendly:
+- Wayland/X11 sockets
+- `RUST_LOG` env only
 
-***Note:*** *this repository is not for reporting issues related to the flathub.org website itself or contributing to its development. For that, go to https://github.com/flathub-infra/website*
+The GTK file chooser uses the document portal, so broad filesystem access is not required. If you prefer convenience for common downloads workflows, you can add `--filesystem=xdg-download`.
+
+## AppStream validation
+Validate the metainfo file locally:
+```
+appstream-util validate-relax packaging/com.davinciconvert.DNxHDTranscoder.metainfo.xml
+```
+
+## Contributing
+Issues and pull requests are welcome. Please format code with `rustfmt` and follow idiomatic GTK4-Rust patterns.
+
+## License
+GPL-3.0-or-later. See the license header in source files or the project manifest.
+
