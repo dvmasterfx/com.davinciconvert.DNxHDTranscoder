@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.davinciconvert.DNxHDTranscoder</id>
+  <launchable type="desktop-id">com.davinciconvert.DNxHDTranscoder.desktop</launchable>
+  <name>DNxHD Transcoder</name>
+  <summary>Transcode videos to DNxHD/DNxHR in MOV or MXF containers</summary>
+  <developer id="com.davinciconvert">
+    <name>DaVinci Convert</name>
+  </developer>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <description>
+    <p>DNxHD Transcoder is a simple GTK4 application to batch transcode videos into Avid DNxHD/DNxHR codecs, targeting MOV or MXF containers. It includes options for audio bit depth, channels, frame rate control, timecode injection, and optional EBU R128 loudness normalization.</p>
+  </description>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.1.1" date="2025-08-17"/>
+  </releases>
+  <keywords>
+    <keyword>video</keyword>
+    <keyword>transcode</keyword>
+    <keyword>dnxhd</keyword>
+    <keyword>dnxhr</keyword>
+    <keyword>ffmpeg</keyword>
+    <keyword>mov</keyword>
+    <keyword>mxf</keyword>
+  </keywords>
+  <url type="homepage">https://example.com/dnxhd-transcoder</url>
+</component>
+

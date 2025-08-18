@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=DNxHD Transcoder
+GenericName=Video Transcoder
+Comment=Transcode videos to DNxHD/DNxHR in MOV or MXF containers
+Exec=dnxhd_gui
+Icon=com.davinciconvert.DNxHDTranscoder
+StartupWMClass=com.davinciconvert.DNxHDTranscoder
+Categories=AudioVideo;Video;Graphics;
+Keywords=video;transcode;dnxhd;dnxhr;ffmpeg;mov;mxf;
+StartupNotify=true
+Terminal=false
+
