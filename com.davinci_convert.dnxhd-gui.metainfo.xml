@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.davinci_convert.dnxhd-gui</id>
+  <name>DNxHD Transcoder</name>
+  <summary>Easy DNxHD/DNxHR video transcoding for MOV and MXF</summary>
+  <description>
+    <p>DNxHD Transcoder is a graphical utility for converting video files to the DNxHD or DNxHR format in MOV or MXF containers, with support for audio normalization, FPS, and metadata options. It provides an intuitive drag-and-drop interface and builds on ffmpeg with a modern GTK4 GUI.</p>
+  </description>
+  <url type="homepage">https://github.com/dvmasterfx/com.davinciconvert.DNxHDTranscoder</url>
+  <developer_name>David, Davinci Convert Team</developer_name>
+  <project_license>GPL-3.0-or-later</project_license>
+  <screenshots>
+     <screenshot type="default">
+       <image type="source" width="1280" height="720">https://github.com/dvmasterfx/com.davinciconvert.DNxHDTranscoder/raw/main/screenshots/main-ui.png</image>
+     </screenshot>
+     <screenshot>
+       <image type="source" width="1280" height="720">https://github.com/dvmasterfx/com.davinciconvert.DNxHDTranscoder/raw/main/screenshots/progress.png</image>
+     </screenshot>
+   </screenshots>
+  <provides>
+    <binary>dnxhd_gui</binary>
+  </provides>
+</component>
+
